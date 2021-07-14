@@ -14,7 +14,10 @@ try:
          print('カメラから映像を取得できんかったよー')
          break
      
-     dst = cv2.Canny(frame,30.0, 280.0) # エフェクト：エッジのみの抽出
+     gray = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
+     #dst = cv2.stylization(frame) # イラスト風
+     gray, dst = cv2.pencilSketch(frame) # ペンシルスケッチ風
+     #dst = cv2.Canny(frame,30.0, 280.0) # エフェクト：エッジのみの抽出
      #dst = cv2.bitwise_not(dst)  # 白反転する
      dst_resize = cv2.resize(gray,dsize=None, fx=0.7 , fy=0.7)
 

@@ -40,8 +40,8 @@ try:
 
 
      cv2.imshow('My MacbookPro Camera',dst)  #新しいウィンドウを開き画像を映し出す  
-     dst2 = cv2.Canny(frame,10.0, 100.0) # エフェクト：エッジのみの抽出
-     cv2.imshow('My MacbookPro Camera2',dst2)  #新しいウィンドウを開き画像を映し出す  
+     dst2 = cv2.Canny(frame,40.0, 500.0) # エフェクト：エッジのみの抽出
+     #cv2.imshow('My MacbookPro Camera2',dst2)  #新しいウィンドウを開き画像を映し出す  
      if cv2.waitKey(1) & 0xFF == ord('q'):
          break
      
