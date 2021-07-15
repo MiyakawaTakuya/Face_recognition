@@ -5,7 +5,7 @@ import numpy as np
 
 
 try:
-  capture = cv2.VideoCapture(1) #カメラ指定 1が内蔵インカメラの引数
+  capture = cv2.VideoCapture(0) #カメラ指定 1が内蔵インカメラの引数
   height = int(capture.get(cv2.CAP_PROP_FRAME_HEIGHT))
   width = int(capture.get(cv2.CAP_PROP_FRAME_WIDTH))
   roi_target = [0,1,2,3]
@@ -32,14 +32,15 @@ try:
                  
      counter -= 1
      if counter <= 0:
-         counter = 12
+         counter = 24
          for i in range(0,4):
              roi_target[i] += 1
              if roi_target[i] == 4:
                  roi_target[i] = 0
 
 
-     cv2.imshow('My MacbookPro Camera',dst)  #新しいウィンドウを開き画像を映し出す  
+     dst_resize = cv2.resize(dst,dsize=None, fx=0.7 , fy=0.7)     
+     cv2.imshow('My MacbookPro Camera',dst_resize)  #新しいウィンドウを開き画像を映し出す  
      dst2 = cv2.Canny(frame,40.0, 500.0) # エフェクト：エッジのみの抽出
      #cv2.imshow('My MacbookPro Camera2',dst2)  #新しいウィンドウを開き画像を映し出す  
      if cv2.waitKey(1) & 0xFF == ord('q'):
