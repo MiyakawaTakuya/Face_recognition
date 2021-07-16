@@ -3,7 +3,7 @@ import numpy as np
 import cv2
 
 
-img = cv2.imread("/Users/miyagawatakuya/.spyder-py3/OpenCV_Test/img/park.HEIC")
+img = cv2.imread("/Users/miyagawatakuya/.spyder-py3/OpenCV_Test/img/staba.JPEG")
 # 油絵エフェクトパラメータ
 # size, dynRatio
 prms = [(10,1), (5, 1), (5,4), (3,10), (2,5)]
@@ -13,7 +13,7 @@ for (size, dynRatio) in prms:
     dst = cv2.xphoto.oilPainting(img, size, dynRatio, cv2.COLOR_BGR2Lab)
     # 結果を出力
     cv2.imshow("oil painting effect" % (size,dynRatio) , dst)
-    cv2.imwrite("/Users/miyagawatakuya/.spyder-py3/OpenCV_Test/output/park.jpg", dst)
+    cv2.imwrite("/Users/miyagawatakuya/.spyder-py3/OpenCV_Test/output/staba.jpg", dst)
     cv2.waitKey()
     cv2.destroyAllWindows()
 

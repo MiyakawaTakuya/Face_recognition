@@ -47,7 +47,7 @@ def pixel_art(img, alpha=2, K=9):
 
 
 try:
-  capture = cv2.VideoCapture(1) #カメラ指定 1が内蔵インカメラの引数  
+  capture = cv2.VideoCapture(0) #カメラ指定 1が内蔵インカメラの引数  
   while(True):
      ret, frame = capture.read()
      if ret == False:
@@ -56,9 +56,9 @@ try:
 
      #ドット絵化 （img, alpha=小さいほど荒くなる, K=大きいほど色合いが落ちる）
      dst = pixel_art(frame, 0.1, 7)
-     cv2.imshow('pixel',dst)  #新しいウィンドウを開き画像を映し出す
-     #dst_resize = cv2.resize(dst,dsize=None, fx=0.7 , fy=0.7)
-     #cv2.imshow('pixel',dst_resize)  #新しいウィンドウを開き画像を映し出す
+     #cv2.imshow('pixel',dst)  #新しいウィンドウを開き画像を映し出す
+     dst_resize = cv2.resize(dst,dsize=None, fx=0.7 , fy=0.7)
+     cv2.imshow('pixel',dst_resize)  #新しいウィンドウを開き画像を映し出す
      if cv2.waitKey(1) & 0xFF == ord('q'):
          break
      

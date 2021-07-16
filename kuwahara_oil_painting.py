@@ -49,7 +49,7 @@ class KuwaharaFilter:
 
         # 結果画像を計算
         filtered = np.zeros(grayscale.shape, dtype=np.float32)
-        height, width = grayscale.shape[:2]
+        height, width = grayscale.shape[:4]
         for y in range(0,height):
             for x in range(0,width):
                 filtered[y,x] = means[lo_sd_index[y,x]][y,x]
@@ -57,14 +57,15 @@ class KuwaharaFilter:
 
 #画像読込
 #pic_image=cv2.imread('/Users/miyagawatakuya/.spyder-py3/OpenCV_Test/img/park.HEIC', cv2.IMREAD_COLOR)
-pic_image=cv2.imread('/Users/miyagawatakuya/.spyder-py3/OpenCV_Test/img/shibuya.PNG', cv2.IMREAD_COLOR)
+#pic_image=cv2.imread('/Users/miyagawatakuya/.spyder-py3/OpenCV_Test/img/shibuya.PNG', cv2.IMREAD_COLOR)
+pic_image=cv2.imread('/Users/miyagawatakuya/.spyder-py3/OpenCV_Test/img/staba.JPEG', cv2.IMREAD_COLOR)
 
-# 桑原フィルタ
-kf = KuwaharaFilter(9)
+# 桑原フィルタ  
+kf = KuwaharaFilter(42)  #kfの値が60近くなってくると荒目すぎて油絵感を通り過ぎてしまう
 filtered = kf.filter(pic_image)
 
 cv2.imshow("Kuwahara filtered", filtered)
-cv2.imwrite("/Users/miyagawatakuya/.spyder-py3/OpenCV_Test/output/shibuya.jpg", filtered)
+cv2.imwrite("/Users/miyagawatakuya/.spyder-py3/OpenCV_Test/output/staba5.jpg", filtered)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 
