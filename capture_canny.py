@@ -4,7 +4,7 @@ import numpy as np
 #import pafy
 
 try:
-  capture = cv2.VideoCapture(2) #カメラ指定 1が内蔵インカメラの引数
+  capture = cv2.VideoCapture(0) #カメラ指定 1が内蔵インカメラの引数
   print(capture.get(cv2.CAP_PROP_FPS))
   print(capture.get(cv2.CAP_PROP_FRAME_COUNT))
   
@@ -15,8 +15,8 @@ try:
          break
      
      #dst = cv2.Canny(frame,40.0, 150.0) # エフェクト：エッジのみの抽出
-     dst = cv2.Canny(frame,32.0, 200.0) # エフェクト：エッジのみの抽出
-     #dst = cv2.Canny(frame,32.0, 300.0) # エフェクト：エッジのみの抽出
+     #dst = cv2.Canny(frame,32.0, 200.0) # エフェクト：エッジのみの抽出
+     dst = cv2.Canny(frame,32.0, 300.0) # エフェクト：エッジのみの抽出
      #dst = cv2.Canny(frame,32.0, 400.0) # エフェクト：エッジのみの抽出
      dst = cv2.bitwise_not(dst)  # 白反転する
      dst_resize = cv2.resize(dst,dsize=None, fx=0.7 , fy=0.7)
